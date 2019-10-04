@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats physics="debug: false">
+<!--      <a-assets>
+        <a-asset-item id="table-obj" src="../1-block-out-b/table/Table_01.obj"></a-asset-item>
+        <a-asset-item id="table-mtl" src="../1-block-out-b/table/Table_01.mtl"></a-asset-item>
+
+        <a-asset-item id="sofa-obj" src="../1-block-out-b/sofa/model.obj"></a-asset-item>
+        <a-asset-item id="sofa-mtl" src="../1-block-out-b/sofa/materials.mtl"></a-asset-item>
+
+        <a-asset-item id="chair-obj" src="../1-block-out-b/chair-light/WoodChair.obj"></a-asset-item>
+        <a-asset-item id="chair-mtl" src="../1-block-out-b/chair-light/WoodChair.mtl"></a-asset-item>
+
+        <a-asset-item id="speakers-obj" src="../1-block-out-b/speakers-light/hifiStereo.obj"></a-asset-item>
+        <a-asset-item id="speakers-mtl" src="../1-block-out-b/speakers-light/hifiStereo.mtl"></a-asset-item>
+
+        <audio id="soundtrack" src="../1-block-out-b/mountain-king.mp3" ></audio>
+      </a-assets>
+
+      <a-entity static-body obj-model="obj: #table-obj; mtl: #table-mtl" position="-1 0.5 -5" rotation="-90 0 0" scale="0.006 0.006 0.006"></a-entity> -->
+
+      <!-- <a-entity static-body obj-model="obj: #chair-obj; mtl: #chair-mtl" position="2 0 -7" rotation="-90 0 0" scale="0.006 0.006 0.006"></a-entity> -->
+
+      <!-- <a-entity static-body obj-model="obj: #sofa-obj; mtl: #sofa-mtl" position="4 1 -4" scale="3 3 3"></a-entity> -->
+
+      <!-- <a-entity dynamic-body position="-10 1 7" rotation="0 180 0" scale=".08 .08 .08" obj-model="obj: #speakers-obj; mtl: #speakers-mtl" sound="src: #soundtrack; autoplay: true"></a-entity> -->
+
+
+      <a-box dynamic-body="mass: 0" position="-1 0.5 -7" rotation="0 45 0" color="#4CC3D9">
+        <a-text value="table" position="0 1 0" color="black"></a-text>
+      </a-box>
+
+      <a-sphere static-body id="sphere" position="0 1.25 -9" radius="1.25" color="#EF2D5E">
+        <a-text value="chair" position="0 2 0" color="black"></a-text>
+      </a-sphere>
+
+      <a-cylinder static-body position="1 0.75 -7" radius="0.5" height="1.5" color="#FFC65D">
+        <a-text value="sofa" position="0 1 0" color="black"></a-text>
+      </a-cylinder>
+
+      <!-- environment -->
+      <!-- <a-entity environment="preset: yavapai"></a-entity> -->
+      <a-plane static-body position="0 -75 0" rotation="-90 0 0" width="200" height="200" color="#7BC8A4"></a-plane>
+      <a-plane static-body position="0 75 0" rotation="90 0 0" width="200" height="200" color="#7BC8A4"></a-plane>
+      <a-plane static-body position="-75 0 0" rotation="0 90 90" width="200" height="200" color="#7BC8A4"></a-plane>
+      <a-plane static-body position="75 0 0" rotation="0 -90 -90" width="200" height="200" color="#7BC8A4"></a-plane>
+      <a-plane static-body position="0 0 -75" rotation="0 0 0" width="200" height="200" color="#7BC8A4"></a-plane>
+      <a-plane static-body position="0 0 75" rotation="0 -180 0" width="200" height="200" color="#7BC8A4"></a-plane>
+
+      <!-- entitized plane:  -->
+      <!-- <a-entity geometry="primitive: plane; height: 10; width: 10" position="0 0 0" rotation="-90 0 0" material="color: #7BC8A4"></a-entity> -->
+      <a-entity static-body="linearDampening: 1; mass: 0" movement-controls="fly: true" position="0 2 0">
+        <a-entity camera look-controls></a-entity>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 0"
+                  geometry="primitive: sphere; radius: 0.002; "
+                  material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
+
+      <a-entity position="0 0.25 0" rotation="-90 0 0" scale=".5 .5 .5" link="href: ../index.html; title: home"></a-entity>
+        
+    </a-scene>
+  </body>
+</html>
+

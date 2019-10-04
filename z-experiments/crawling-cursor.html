@@ -1,0 +1,46 @@
+ <html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/jujunjun110/aframe-crawling-cursor/master/dist/aframe-crawling-cursor.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats physics>
+      <a-assets>
+        <a-asset-item id="table-obj" src="../1-block-out-b/table/Table_01.obj"></a-asset-item>
+        <a-asset-item id="table-mtl" src="../1-block-out-b/table/Table_01.mtl"></a-asset-item>
+
+        <a-asset-item id="sofa-obj" src="../1-block-out-b/sofa/model.obj"></a-asset-item>
+        <a-asset-item id="sofa-mtl" src="../1-block-out-b/sofa/materials.mtl"></a-asset-item>
+
+        <a-asset-item id="chair-obj" src="../1-block-out-b/chair-light/WoodChair.obj"></a-asset-item>
+        <a-asset-item id="chair-mtl" src="../1-block-out-b/chair-light/WoodChair.mtl"></a-asset-item>
+
+        <a-asset-item id="speakers-obj" src="../1-block-out-b/speakers-light/hifiStereo.obj"></a-asset-item>
+        <a-asset-item id="speakers-mtl" src="../1-block-out-b/speakers-light/hifiStereo.mtl"></a-asset-item>
+
+        <audio id="soundtrack" src="../1-block-out-b/mountain-king.mp3" ></audio>
+      </a-assets>
+
+      <a-entity obj-model="obj: #table-obj; mtl: #table-mtl" position="-1 0.5 -5" rotation="-90 0 0" scale="0.006 0.006 0.006"></a-entity>
+
+      <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl" position="2 0 -7" rotation="-90 0 0" scale="0.006 0.006 0.006"></a-entity>
+
+      <a-entity obj-model="obj: #sofa-obj; mtl: #sofa-mtl" position="4 1 -4" scale="3 3 3"></a-entity>
+      
+      <a-entity position="-10 1 7" rotation="0 180 0" scale=".08 .08 .08" obj-model="obj: #speakers-obj; mtl: #speakers-mtl" sound="src: #soundtrack; autoplay: true">
+        <a-animation dur="10000" attribute="position" to="10 1 7" ease="ease-in-out" repeat="indefinite"></a-animation>
+      </a-entity>
+
+      <!-- environment -->
+      <a-entity environment="preset: yavapai"></a-entity>
+      <!-- entitized plane:  -->
+      <!-- <a-entity geometry="primitive: plane; height: 10; width: 10" position="0 0 0" rotation="-90 0 0" material="color: #7BC8A4"></a-entity> -->
+
+
+      <a-entity position="0 0.25 0" rotation="-90 0 0" scale=".5 .5 .5" link="href: ../index.html; title: home"></a-entity>
+        
+    </a-scene>
+  </body>
+</html>
+

@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats>
+      <a-assets>
+        <a-asset-item id="table-obj" src="../1-block-out-b/table/Table_01.obj"></a-asset-item>
+        <a-asset-item id="table-mtl" src="../1-block-out-b/table/Table_01.mtl"></a-asset-item>
+        <a-mixin id="table" obj-model="obj: #table-obj; mtl: #table-mtl"></a-mixin>
+
+        <a-asset-item id="sofa-obj" src="../1-block-out-b/sofa/model.obj"></a-asset-item>
+        <a-asset-item id="sofa-mtl" src="../1-block-out-b/sofa/materials.mtl"></a-asset-item>
+        <a-mixin id="sofa" obj-model="obj: #sofa-obj; mtl: #sofa-mtl"></a-mixin>
+
+        <a-asset-item id="chair-obj" src="../1-block-out-b/chair-light/WoodChair.obj"></a-asset-item>
+        <a-asset-item id="chair-mtl" src="../1-block-out-b/chair-light/WoodChair.mtl"></a-asset-item>
+
+        <a-asset-item id="room-gltf" src="./CubeRoom/CubeRoom.gltf"></a-asset-item>
+
+        <audio id="soundtrack" src="../1-block-out-b/mountain-king.mp3" ></audio>
+
+        <a-mixin id="google-poly" rotation="-90 0 0" scale="0.006 0.006 0.006"></a-mixin>
+      </a-assets>
+
+      <!-- furnishings -->
+      <a-entity scale="1 2 1"> 
+        <a-entity position="-1 0.5 -5" mixin="table google-poly"></a-entity>
+        <a-entity position="2 0 -7" mixin="google-poly">
+          <a-entity obj-model="obj: #chair-obj; mtl: #chair-mtl"></a-entity>
+        </a-entity>
+        <a-entity position="4 1 -4" scale="3 3 3">
+          <a-obj-model mixin="sofa"></a-obj-model>
+          <a-box position="0 1 0" scale=".3 .3 .3"></a-box>
+        </a-entity>
+      </a-entity>
+      
+      <!-- speaker and friends -->
+      <a-entity position="-10 1 7" rotation="0 180 0">
+        <a-entity particle-system="color: #EF0000,#44CC00; maxParticleCount: 100; maxAge: 1">
+          <a-sound src="#soundtrack" autoplay="true" rolloffFactor="2" volume="2"></a-sound>
+          <!-- <a-entity sound="src: #soundtrack; autoplay: true"></a-entity> -->
+          <a-animation dur="17000" to="-9 1 7"
+                      attribute="position"
+                      ease="ease-in-out"
+                      repeat="indefinite">
+          </a-animation>
+        </a-entity>
+      </a-entity>
+
+      <!-- environment -->
+      <a-gltf-model src="#room-gltf" scale="2.5 2.5 2.5"></a-gltf-model>
+
+      <!-- camera and link home, move it wherever you like -->
+      <a-entity>
+        <a-entity camera look-controls position="0 2 0">
+          <a-entity cursor="fuse: true; fuseTimeout: 500"
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    material="color: black; shader: flat">
+          </a-entity>
+        </a-entity>
+        <a-entity position="0 0.25 0" rotation="-90 0 0" scale=".5 .5 .5">
+          <a-link href="../index.html"></a-link>
+        <a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

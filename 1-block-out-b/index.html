@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats>
+      <a-assets>
+        <a-asset-item id="table-obj" src="./table/Table_01.obj"></a-asset-item>
+        <a-asset-item id="table-mtl" src="./table/Table_01.mtl"></a-asset-item>
+
+        <a-asset-item id="sofa-obj" src="./sofa/model.obj"></a-asset-item>
+        <a-asset-item id="sofa-mtl" src="./sofa/materials.mtl"></a-asset-item>
+
+        <!-- heavy chair:  https://poly.google.com/view/aSjQVsSHIHQ using https://cdn.aframe.io -->
+        <a-asset-item id="chair-obj-heavy" src="https://ucarecdn.com/fbe89e86-e372-4628-84cf-22d51c03f753/"></a-asset-item>
+        <a-asset-item id="chair-mtl-heavy" src="https://ucarecdn.com/deac2686-3bd2-4182-ac0f-a79cd2af5368/"></a-asset-item>
+
+        <a-asset-item id="chair-obj-light" src="./chair-light/WoodChair.obj"></a-asset-item>
+        <a-asset-item id="chair-mtl-light" src="./chair-light/WoodChair.mtl"></a-asset-item>
+
+        <a-asset-item id="speakers-obj-heavy" src="./speakers-heavy/Speakers.obj"></a-asset-item>
+        <a-asset-item id="speakers-mtl-heavy" src="./speakers-heavy/Speakers.mtl"></a-asset-item>
+
+        <a-asset-item id="speakers-obj-light" src="./speakers-light/hifiStereo.obj"></a-asset-item>
+        <a-asset-item id="speakers-mtl-light" src="./speakers-light/hifiStereo.mtl"></a-asset-item>
+
+        <audio id="soundtrack" src="./mountain-king.mp3" ></audio>
+      </a-assets>
+
+      <a-obj-model src="#table-obj" mtl="#table-mtl" scale="0.006 0.006 0.006" position="-1 0.5 -5" rotation="-90 0 0"></a-obj-model>
+
+      <!-- <a-obj-model src="#chair-obj-heavy" mtl="#chair-mtl-heavy" position="2 0 -5"></a-obj-model> -->
+      <a-obj-model src="#chair-obj-light" mtl="#chair-mtl-light" scale="0.006 0.006 0.006" position="2 0 -7" rotation="-90 0 0"></a-obj-model>
+
+      <a-obj-model src="#sofa-obj" mtl="#sofa-mtl" position="1 1.5 -4"></a-obj-model>
+
+      <!-- high-polly -->
+      <!-- <a-obj-model src="#speakers-obj-heavy" mtl="#speakers-mtl-heavy" position="-10 1 25" scale=".08 .08 .08">
+        <a-sound src="#soundtrack" autoplay="true"></a-sound>
+      </a-obj-model> -->
+
+      <!-- low-polly -->
+      <a-obj-model src="#speakers-obj-light" mtl="#speakers-mtl-light"  position="-3 1 6" rotation="0 180 0" scale=".08 .08 .08">
+        <!-- localized soundtrack -->
+        <a-sound src="#soundtrack" autoplay="true"></a-sound>
+      </a-obj-model>
+      <!-- centralized soundtrack -->
+      <!-- <a-sound src="#soundtrack" autoplay="true"></a-sound> -->
+
+      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+      
+      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+      
+      <a-sky color="#ECECEC"></a-sky>
+                  
+      <a-entity camera look-controls position="0 2 0">
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
+
+      <a-link position="0 0.5 0" rotation="-90 0 0" scale=".5 .5 .5" href="../index.html" title="home"><a-link>
+        
+    </a-scene>
+  </body>
+</html>

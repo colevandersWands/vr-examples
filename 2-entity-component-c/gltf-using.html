@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats>
+      <a-assets>
+        <a-asset-item id="scene" src="./scene.gltf"></a-asset-item>
+
+        <audio id="soundtrack" src="../1-block-out-b/mountain-king.mp3" ></audio>
+      </a-assets>
+
+
+      <!-- speaker and friends -->
+      <a-entity position="-10 1 7" rotation="0 180 0">
+        <a-entity particle-system="color: #EF0000,#44CC00; maxParticleCount: 100; maxAge: 1">
+          <a-sound src="#soundtrack" autoplay="true" rolloffFactor="2" volume="2"></a-sound>
+          <!-- <a-entity sound="src: #soundtrack; autoplay: true"></a-entity> -->
+          <a-animation dur="17000" to="-9 1 7"
+                      attribute="position"
+                      ease="ease-in-out"
+                      repeat="indefinite">
+          </a-animation>
+        </a-entity>
+      </a-entity>
+
+      <!-- environment -->
+      <a-gltf-model src="#scene" scale="2.5 2.5 2.5"></a-gltf-model>
+
+      <!-- camera and link home, move it wherever you like -->
+      <a-entity>
+        <a-entity camera look-controls position="0 2 0">
+          <a-entity cursor="fuse: true; fuseTimeout: 500"
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    material="color: black; shader: flat">
+          </a-entity>
+        </a-entity>
+        <a-entity position="0 0.25 0" rotation="-90 0 0" scale=".5 .5 .5">
+          <a-link href="../index.html"></a-link>
+        <a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
